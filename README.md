@@ -85,6 +85,7 @@ On Linux use `.venv/bin/pip` and `.venv/bin/pytest`.
 
 ## Related
 
-- Shell workers and runbook: [ops/mongodb-backup/](ops/mongodb-backup/)
+- Operator steps: [RUNBOOK.md](RUNBOOK.md)
+- Shell workers: [ops/mongodb-backup/](ops/mongodb-backup/)
 - Production policy: **ASAT-V2-BACKEND** `docs/MONGODB_BACKUP_POLICY.md`
 - AWS Terraform: **ASAT-V2-DEPLOYMENT-BACKEND** `5-s3-bucket.tf`
