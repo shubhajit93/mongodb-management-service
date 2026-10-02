@@ -1,0 +1,20 @@
+[Unit]
+Description=ASAT MongoDB management API (control plane)
+Documentation=file:///opt/asat/mongodb-management/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/asat/mongodb-management
+EnvironmentFile=/etc/asat/mongodb-management.env
+ExecStart=/opt/asat/mongodb-management/.venv/bin/uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8091
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+# Do not place AWS or Mongo passwords in this unit. They stay in mongodb-backup.env.
+
+[Install]
+WantedBy=multi-user.target

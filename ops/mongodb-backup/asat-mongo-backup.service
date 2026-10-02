@@ -1,0 +1,21 @@
+[Unit]
+Description=ASAT V2 MongoDB backup (mongodump to S3)
+Documentation=file:///opt/asat/mongodb-backup/RUNBOOK.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+EnvironmentFile=/etc/asat/mongodb-backup.env
+ExecStart=/opt/asat/mongodb-backup/mongodb-backup.sh
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+TimeoutStartSec=6h
+
+# Journal only; do not leave dumps on disk after the script exits
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

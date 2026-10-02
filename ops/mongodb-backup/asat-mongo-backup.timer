@@ -1,0 +1,17 @@
+[Unit]
+Description=ASAT V2 MongoDB backup timer (02:00, 10:00, 18:00 UTC)
+Documentation=file:///opt/asat/mongodb-backup/RUNBOOK.md
+
+[Timer]
+# Fire in UTC even when the database host timezone is Asia/Dhaka.
+Timezone=UTC
+OnCalendar=*-*-* 02:00:00
+OnCalendar=*-*-* 10:00:00
+OnCalendar=*-*-* 18:00:00
+Persistent=true
+Unit=asat-mongo-backup.service
+AccuracySec=1s
+RandomizedDelaySec=0
+
+[Install]
+WantedBy=timers.target
